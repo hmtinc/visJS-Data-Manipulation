@@ -1,4 +1,4 @@
-![logo]()
+![logo](https://raw.githubusercontent.com/hmtinc/visJS-Data-Manipulation/master/Source/logo.png)
 # Diamond - visJS Data Manipulation
 visJS Data Manipulation scripts allow for a user to post data to a server and have it displayed for all users 
 through the visJS Graph2D library.
