@@ -1,4 +1,4 @@
-
+<?php
     //Posted Values 
     $val = $_POST['val'];
     $path = $_POST['path'];
@@ -176,3 +176,4 @@
         
     //Message
     echo "Values have been submited to server. Please check dashboard to ensure values have been correctly entered."
+?>
