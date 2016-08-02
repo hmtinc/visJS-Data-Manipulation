@@ -10,12 +10,9 @@ to address this need by allow for visJS to import data from a CSV file on a serv
 to the remote CSV file.
 
 #Usage : Posting Data 
-A major feature of Diamond, is that user can submit new data or modify existing data entries. To achieve this function, a PHP script (submit.php)
-is used to enter new data or modify existing data. The script will determine if a entry exists or not and they update the values accordingly.
+A major feature of Diamond, is that user can submit new data or modify existing data entries. To achieve this function, a PHP script (submit.php) is used to enter new data or modify existing data. The script will determine if a entry exists or not and they update the values accordingly.
 
-To use this function, you must design your site to POST data to the PHP script. All values must be posted under the name "val" and 
-the path of the CSV must be posted under the name "path". "val" should be an array of values with the first 3 values  
-being Year, Month, Day followed by all the data values (refer to table below) .
+To use this function, you must design your site to POST data to the PHP script. All values must be posted under the name "val" and the path of the CSV must be posted under the name "path". "val" should be an array of values with the first 3 values being Year, Month, Day followed by all the data values (refer to table below) .
 
 Val Index | Value 
 ------------ | -------------
