@@ -33,7 +33,7 @@ date | ValueName | ValueName2
 
 Please note that dates posted do not have to be submitted with dashes (-) or reformatted to be 4/2 digits long.
 
-#Usage : Embedding the GRaph Graph
+#Usage : Embedding the Graph
 Integrating the Graph into a web page is fairy straight forward, but there are few steps to ensure the graph can be display data from a server.
 
 First, ensure line 10 of graph.js is set to your desired ID name, as this what ID your div container must have. By Default the ID is 
