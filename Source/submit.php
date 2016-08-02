@@ -1,4 +1,3 @@
-<?php
 
     //Posted Values 
     $val = $_POST['val'];
@@ -24,10 +23,11 @@
         $index = 0;
       
         foreach($array as $entry ){
-            
             if ($entry['date'] == $date){
                $update = True;
+               
                $index = $count;
+               break;
             }
             
             $count++;
@@ -41,10 +41,55 @@
             update_entry($array, $date, $dataArray, $path, $index);
         }
     }
-    
+          
     //Update an entry
     function update_entry($array, $date, $dataArray, $path, $index){
         
+       $count = -1;
+       $erase = False;
+       $eCount = 0;
+    
+       //Iterate over each Cell and update the values
+       foreach ($array[$index] as &$cell){
+           if($count == 0) {
+               $count = 3;
+           }
+           
+           if ($count > 0 && $cell != "" ) {
+              
+               $cellNum = intval($cell);
+               $cellNum += $dataArray[$count];
+               $cell = strval($cellNum);
+               
+           }
+           else if ($count > 0){
+               $cell = strval($dataArray[$count]);
+           }
+           
+           $count++;
+       }
+        
+       //Determine if the entry should be deleted. 
+       foreach ($array[$index] as $cell){
+           if ($ecount == 0){
+               $erase = False;
+           }
+           else if ($cell != ""){
+               $erase = False;
+               break;
+           }
+           
+           $ecount++;
+           $erase = True;
+       }
+        
+       //Delete entry if Erase is true
+       if($erase == True){
+           unset($array[$index]);
+       }    
+    
+        //Save Array to CSV
+        to_csv($array, $path);
     }
     
     //Make a new entry
@@ -84,6 +129,15 @@
     
     //Array to CSV
     function to_csv($array, $path){
+       
+       //erase zeros
+       foreach ($array as &$entry){
+           foreach ($entry as &$cell){
+               if ($cell == "0"){
+                   $cell = "";
+               }
+           }
+       }
         
        // Get CSV String
        $csvStr = str_putcsv($array);
@@ -114,12 +168,11 @@
     $day = sprintf("%02d", $val[2]);
     $date = $year . $dash . $month . $dash . $day; 
     
-    echo $path;
     //Convert CSV to array 
     $csv = csv_to_array($path, ',');
     
     //Apply Required Steps 
     update_or_new($csv, $date, $val, $path);
-  
- 
-?>
+        
+    //Message
+    echo "Values have been submited to server. Please check dashboard to ensure values have been correctly entered."
